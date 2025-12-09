@@ -63,3 +63,75 @@ Formador: Alejandro Cerezo <alce65@hotmail.es>
 - Servicios stateful: patrón Flux
   - Estado con RxJS: Subjects. Uso desde los componentes
   - Estado basado en Signals
+
+## Desarrollo del curso
+
+## Dado por supuesto
+
+- Elementos básicos de TypeScript.
+
+  - Tipos de datos. Inferencia y anotación de tipos.
+  - Tipado de funciones.
+  - Tipos personalizados. Interfaces y tipos.
+  - Clases ES6 en TypeScript.
+    - Modificadores de acceso.
+    - Getters y Setters de ES.
+    - Herencia.
+    - Clases abstractas.
+  - Promesas y genéricos
+  - Módulos ES6 en TypeScript.
+    - Import y Export.
+    - Módulos por defecto y nombrados.
+  - Decoradores en TypeScript.
+
+## Día 1 (M-09): Introducción a Angular
+
+- Introducción a Angular y su ecosistema.
+- Requisitos: Node.js y npm. Editor VSCode
+
+- Entorno y proyectos en Angular
+
+  - VSCode Extensiones recomendadas.
+  - Instalación de Angular CLI.
+  - Creación de un nuevo workspace Angular sin proyecto. `ng new`
+  - Creación de un nuevo proyecto (app) Angular. `ng generate app`
+  - Estructura de un workspace/proyecto Angular.
+  - Añadiendo ESLint (`ng add`) y Prettier.
+  - Angular CLI: Comandos básicos.
+    - Servidor de desarrollo: `ng serve`.
+    - Signals en el estado del componente y en la plantilla.
+
+- [Descanso]: 11:45 - 12:10 hs
+
+  - Angular CLI: Comandos básicos.
+    - Testing con Vitest: `ng test`.
+    - Testing con Playwright: `ng e2e`.
+    - Construcción del proyecto: `ng build`.
+  - Generación de componentes: `ng generate component <nombre>`.
+    - Elementos de un componente: HTML, CSS, TypeScript.
+    - Template y estilos inline o en ficheros.
+    - Guía de estilos actualizada
+    - Programación declarativa en el template: {{}}, [], ()
+
+- Testing de componentes. Pruebas unitarias
+
+  - Test con Vitest. Conceptos básicos y ejemplo
+  - Elementos de los test en Angular: TestBed, fixture, detectChanges()
+  - Test de implementación v. test de comportamiento.
+  - Tests para componentes básicos.
+
+## Día 2 (M-25): Componentes y Rutas
+
+- Testing de componentes. Pruebas unitarias (continuación)
+  - DebugElement v. querySelector.
+
+- Scaffolding. Core
+
+  - Componentes Header y Footer.
+  - Componente Menu. Proyección de contenido
+  - Componentes Card y Layout. Aspecto visual básico.
+  - App como contenedor principal.
+
+- Testing de todos los componentes
+
+  - Test de Header, Footer, Menu, Card y Layout.
