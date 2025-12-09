@@ -5,6 +5,7 @@ This project was generated using [Angular CLI](https://github.com/angular/angula
 ```bash
 ng new ng21 --create-application false --ai-config copilot
 cd ng21
+ng g app demo1 -t -s -p fox --ssr false --style css
 ```
 
 ## Development server
