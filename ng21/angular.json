@@ -85,6 +85,17 @@
             ],
             "eslintConfig": "projects/demo1/eslint.config.js"
           }
+        },
+        "e2e": {
+          "builder": "playwright-ng-schematics:playwright",
+          "options": {
+            "devServerTarget": "demo1:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "demo1:serve:production"
+            }
+          }
         }
       }
     }
