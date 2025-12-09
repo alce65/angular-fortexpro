@@ -8,6 +8,8 @@ Curso de introducción a Angular 21 para [Fortexpro](https://fortexpro.es/)
 
 Repositorio: [GitHub](https://github.com/alce65/angular-fortexpro)
 
+Formador: Alejandro Cerezo <alce65@hotmail.es>
+
 ## Contenido
 
 - Introducción. Entorno. Uso de Angular CLI.
