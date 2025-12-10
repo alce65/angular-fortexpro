@@ -5,12 +5,15 @@ import { Component, signal } from '@angular/core';
   imports: [],
   template: `
     <header>
-      <div>
-        <h1>{{ title() }}</h1>
-        <p>{{ subtitle() }}</p>
-      </div>
-      <div>
-        <img src="/favicon.ico" alt="Angular Logo" />
+      <ng-content></ng-content>
+      <div class="main-header">
+        <div>
+          <h1>{{ title() }}</h1>
+          <p>{{ subtitle() }}</p>
+        </div>
+        <div>
+          <img src="/favicon.ico" alt="Angular Logo" />
+        </div>
       </div>
     </header>
   `,
@@ -26,13 +29,24 @@ import { Component, signal } from '@angular/core';
       background-color: #f8f9fa;
       padding: 1rem 2rem;
       text-align: center;
-      display: grid;
-      grid-template-columns: 1fr auto;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
       align-items: center;
+
+      .main-header {
+        display: grid;
+        grid-template-columns: 1fr auto;
+      }
+
       h1 {
         margin: 0;
         color: #343a40;
       }
+    }
+    p {
+      font-style: italic;
+      color: #6c757d;
     }
   `,
 })
