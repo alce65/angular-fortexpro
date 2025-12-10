@@ -99,6 +99,7 @@ Formador: Alejandro Cerezo <alce65@hotmail.es>
   - Añadiendo ESLint (`ng add`) y Prettier.
   - Angular CLI: Comandos básicos.
     - Servidor de desarrollo: `ng serve`.
+    - Modo JIT (desarrollo) v. AOT (producción)
     - Signals en el estado del componente y en la plantilla.
 
 - [Descanso]: 11:45 - 12:10 hs
@@ -111,27 +112,59 @@ Formador: Alejandro Cerezo <alce65@hotmail.es>
     - Elementos de un componente: HTML, CSS, TypeScript.
     - Template y estilos inline o en ficheros.
     - Guía de estilos actualizada
-    - Programación declarativa en el template: {{}}, [], ()
+    - Scaffolding. Core
+    - Componentes Header y Footer.
 
 - Testing de componentes. Pruebas unitarias
 
   - Test con Vitest. Conceptos básicos y ejemplo
-  - Elementos de los test en Angular: TestBed, fixture, detectChanges()
+  - Elementos de los test en Angular: TestBed, fixture, componentInstance.
   - Test de implementación v. test de comportamiento.
-  - Tests para componentes básicos.
+  - Tests para componentes básicos. Header, Footer
 
-## Día 2 (M-25): Componentes y Rutas
+## Día 2 (M-25): Componentes
 
 - Testing de componentes. Pruebas unitarias (continuación)
+
   - DebugElement v. querySelector.
+  - detectChanges()
 
-- Scaffolding. Core
+- Scaffolding. Core (continuación)
 
-  - Componentes Header y Footer.
+  - Programación declarativa en el template: {{}}, [], ()
   - Componente Menu. Proyección de contenido
   - Componentes Card y Layout. Aspecto visual básico.
   - App como contenedor principal.
 
 - Testing de todos los componentes
-
   - Test de Header, Footer, Menu, Card y Layout.
+  -
+- Scaffolding. Features
+
+  - Componentes (pages): Home, About.
+
+- Componentes.
+  - Componente Counter. Eventos. (click)
+
+[Descanso]: 11:35 - 12:00 hs
+
+Componentes (continuación).
+
+- Componente Greeting. Input de usuario: data binding. [(ngModel)]
+- Referencias locales. #ref
+  - Componente GreetingRef. Referencias locales en el template.
+- Ciclo de vida de los componentes
+
+## Día 3 (M-25): Componentes y Rutas
+
+Componentes (continuación).
+
+- Componente Counter2. Condicionales @If. [class]
+- Modificamos Menu. @for
+
+- Componentes: estado. Zone v. Zoneless
+- Estado en los componentes con ZoneJS.
+  - Componente Counter. Estado y eventos.
+  - Detección del cambio: Zone v. Zoneless
+  - Signals y estado
+  - Zoneless y asincronía: uso de Signals
