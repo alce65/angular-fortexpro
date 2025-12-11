@@ -157,14 +157,48 @@ Componentes (continuación).
 
 ## Día 3 (M-25): Componentes y Rutas
 
-Componentes (continuación).
+- Referencias locales(#ref) y acceso al DOM
+  - Focus()
+- Test y ciclo de vida
 
-- Componente Counter2. Condicionales @If. [class]
-- Modificamos Menu. @for
+  - Mocks y spies
 
 - Componentes: estado. Zone v. Zoneless
 - Estado en los componentes con ZoneJS.
+
   - Componente Counter. Estado y eventos.
   - Detección del cambio: Zone v. Zoneless
   - Signals y estado
   - Zoneless y asincronía: uso de Signals
+
+- Rutas básicas. `app.routes.ts`
+  - Array de rutas.
+  - RouterOutlet en AppComponent.
+
+[Descanso]: 11:00 - 11:35 hs
+
+- Rutas. Continuación
+
+  - Array de opciones de menu
+  - Navegación. Componente menu. @for
+  - SPA: RouterLink y RouterLinkActive
+
+- Rutas Lazy. Default import en las páginas
+
+Componentes (continuación). Comunicación entre componentes
+
+- Componente Counter2. Condicionales @If. [class]
+- Input. Decoradores @Input. función input(). Drilling del título
+- MenuOptions opciones como props
+- Output. Decorador @Output. EventEmitter. Función output(). Eventos del contador
+  - Agrupando contadores.
+  - Contadores. Eventos con valor
+
+<!-- 
+- Comunicación entre componentes
+  - Computed signals
+  - Testing de componentes con comunicación.
+
+- Pipes. Location "es"
+- Directivas
+-  -->
