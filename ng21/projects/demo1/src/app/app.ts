@@ -12,9 +12,6 @@ import ProofsPage from "./features/proofs/proofs-page";
   template: ` <fox-layout class="layout">
     <fox-menu />
     <router-outlet />
-    <fox-home-page />
-    <fox-proofs-page />
-    <fox-about-page />
   </fox-layout>`,
 
   styles: [],
