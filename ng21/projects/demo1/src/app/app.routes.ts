@@ -15,6 +15,14 @@ export const routes: Routes = [
       label: 'Inicio',
     },
   },
+    {
+    path: 'counters',
+    loadComponent: () => import('./features/counters/counters-page'),
+    title: 'Dashboard | Demo1',
+    data: {
+      label: 'Dashboard',
+    },
+  },
   {
     path: 'proofs',
     loadComponent: () => import('./features/proofs/proofs-page'),

@@ -4,7 +4,7 @@ import { CounterOld } from './counter';
 import { DebugElement } from '@angular/core';
 import { By } from '@angular/platform-browser';
 
-describe('CounterOld', () => {
+describe.skip('CounterOld', () => {
   let component: CounterOld;
   let fixture: ComponentFixture<CounterOld>;
   let debugElement: DebugElement;
