@@ -5,6 +5,7 @@ import {
   OnChanges,
   OnDestroy,
   OnInit,
+  signal,
   SimpleChanges,
   viewChild,
 } from '@angular/core';
@@ -16,15 +17,17 @@ import { Card } from '../../../../core/components/card/card';
   template: `
     <fox-card>
       <p #text>Ciclo de vida del componente</p>
+      <p>Test value {{ test() }} </p>
     </fox-card>
   `,
   styles: ``,
 })
 export class Cycle implements OnInit, OnDestroy, OnChanges, AfterViewInit {
-  
+
   // @ViewChild('text', { static: true }) paragraphRef!: ElementRef;
 
-  paragraphRef = viewChild<ElementRef<HTMLElement>>('text')  
+  protected paragraphRef = viewChild<ElementRef<HTMLElement>>('text')
+  protected test = signal(23)
 
 
   constructor() {
