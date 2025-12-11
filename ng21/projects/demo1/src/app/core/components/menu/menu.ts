@@ -1,14 +1,15 @@
-import { Component } from '@angular/core';
-import { menuOptions } from '../../../app.routes';
+import { Component, input } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { menuOption } from '../../types/menu-option';
 
 @Component({
   selector: 'fox-menu',
   imports: [RouterModule],
   template: `
+    @let menuOptions = options();
     <nav>
       <ul>
-        @for (item of options; track $index) {
+        @for (item of menuOptions; track $index) {
           <li>
             <a [routerLink]="item.path" routerLinkActive="active">{{ item.label }}</a>
           </li>
@@ -39,5 +40,6 @@ import { RouterModule } from '@angular/router';
   `,
 })
 export class Menu {
-  protected options = menuOptions;
+  // @Input({ required: true}) options!: menuOption[];
+  options = input.required<menuOption[]>();
 }

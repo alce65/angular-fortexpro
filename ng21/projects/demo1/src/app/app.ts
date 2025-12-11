@@ -2,15 +2,13 @@ import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { Menu } from './core/components/menu/menu';
 import { Layout } from './core/components/layout/layout';
-import HomePage from "./features/home/home-page";
-import AboutPage from "./features/about/about-page";
-import ProofsPage from "./features/proofs/proofs-page";
+import { menuOptions } from './app.routes';
 
 @Component({
   selector: 'fox-root',
-  imports: [RouterOutlet, Menu, Layout, HomePage, AboutPage, ProofsPage],
+  imports: [RouterOutlet, Menu, Layout],
   template: ` <fox-layout class="layout">
-    <fox-menu />
+    <fox-menu [options]="options" />
     <router-outlet />
   </fox-layout>`,
 
@@ -18,4 +16,5 @@ import ProofsPage from "./features/proofs/proofs-page";
 })
 export class App {
   // protected readonly title = signal('Angular 21 Demo 1');
+  protected options = menuOptions;
 }

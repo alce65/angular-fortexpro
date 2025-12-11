@@ -1,6 +1,11 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { Menu } from './menu';
+import { menuOption } from '../../types/menu-option';
+import { InputSignal, signal } from '@angular/core';
+import { provideRouter } from '@angular/router';
+
+const mockRoutes: menuOption[] = [{ path: 'test', label: 'Test' }];
 
 describe('Menu', () => {
   let component: Menu;
@@ -8,16 +13,25 @@ describe('Menu', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [Menu]
-    })
-    .compileComponents();
+      imports: [Menu],
+      providers: [provideRouter([])],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(Menu);
     component = fixture.componentInstance;
+    component.options = signal(mockRoutes) as unknown as InputSignal<menuOption[]>;
     await fixture.whenStable();
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should have correct routes rendered', () => {
+    const element = fixture.nativeElement as HTMLElement;
+    const links = element.querySelectorAll('a');
+    expect(links.length).toBe(1);
+    expect(links[0].textContent).toBe('Test');
+
   });
 });
