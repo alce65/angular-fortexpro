@@ -1,14 +1,15 @@
+import { DatePipe, TitleCasePipe } from '@angular/common';
 import { Component, signal } from '@angular/core';
 
 @Component({
   selector: 'fox-footer',
-  imports: [],
+  imports: [DatePipe, TitleCasePipe],
   template: `
     <footer>
       <address>
         <p>{{ autor() }}</p>
         <p>{{ brand() }}</p>
-        <p>{{ today().getFullYear() }}</p>
+        <p>{{ today() | date : 'fullDate' | titlecase }}</p>
       </address>
     </footer>
   `,
