@@ -122,7 +122,7 @@ Formador: Alejandro Cerezo <alce65@hotmail.es>
   - Test de implementación v. test de comportamiento.
   - Tests para componentes básicos. Header, Footer
 
-## Día 2 (M-25): Componentes
+## Día 2 (X-10): Componentes
 
 - Testing de componentes. Pruebas unitarias (continuación)
 
@@ -155,7 +155,7 @@ Componentes (continuación).
   - Componente GreetingRef. Referencias locales en el template.
 - Ciclo de vida de los componentes
 
-## Día 3 (M-25): Componentes y Rutas
+## Día 3 (J-11): Componentes y Rutas
 
 - Referencias locales(#ref) y acceso al DOM
   - Focus()
@@ -189,16 +189,110 @@ Componentes (continuación). Comunicación entre componentes
 
 - Componente Counter2. Condicionales @If. [class]
 - Input. Decoradores @Input. función input(). Drilling del título
-- MenuOptions opciones como props
+  - MenuOptions opciones como props
 - Output. Decorador @Output. EventEmitter. Función output(). Eventos del contador
   - Agrupando contadores.
   - Contadores. Eventos con valor
 
-<!-- 
-- Comunicación entre componentes
+## Dia 4 (V-12): Pipes. Directivas. Arquitectura
+
+- Comunicación entre componentes (continuación)
+
   - Computed signals
-  - Testing de componentes con comunicación.
+    - Cálculos a partir de signals
+    - Signals de solo lectura
+  - Testing de componentes con comunicación (inputs).
+    - fixture.componentRef.setInput()
 
 - Pipes. Location "es"
-- Directivas
--  -->
+- Directivas.
+
+  - Directivas propias de atributo
+
+- [Descanso] 11:30 - 12:00
+
+
+- Directivas (final)
+- Componentes dinámicos
+
+- Arquitectura de componentes
+  - Componentes de contenedores vs de presentación.
+  - Componentes inteligentes vs tontos.
+- Ejemplo: Notes List (desde un proyecto previo)
+  - Entidad Notes. Modelo y mock de datos asíncrono.
+  - Componente Notes-List. Lógica del estado
+  - Componente Notes-Item. Input y Output (Eventos)
+  - Componente Notes-Create. Output (Eventos)
+    - Forms Template Driven (TD)
+    - NgForm implícito, NgModel. Referencias locales
+    - viewChild(NgForm) y form.reset()
+    - viewChild(Form), ElementRef.nativeElement y acceso al DOM
+
+<!--
+
+## Día 5 (L-15). Servicios. Providers e injectors. Formularios DD
+
+- Tests de Forms TD
+- Introducción a los servicios en Angular.
+- Servicios y Providers. DI (Dependency Injection)
+
+  - Provider root v. provider en un componente / ruta
+  - Ejemplo con un servicio simple: DateService
+  - Injector jerárquico. Servicios singleton y no singleton.
+
+- Servicios y patrón Repository
+
+  - Servicio InMemoryTaskRepository. Mock de datos.
+  - Uso en los componentes. Inyección de dependencias.
+  - Métodos CRUD. getAll() y getById()
+
+- [Descanso]
+
+- Servicios y patrón Repository (continuación)
+
+  - Métodos CRUD. add(), update(), delete()
+  - Uso de promesas
+  - Repositorio y lógica de negocio (estado). Estrategias
+  - Repositorio y persistencia local (localStorage).
+  - Testing de servicios.
+    - Tests del servicio
+      - Test de métodos CRUD.
+      - Test de promesas (async, whenStable, expectAsync).
+    - Testing de componentes con servicios (mocks y spies).
+
+- Formularios reactivos (DD)
+  - FormGroup, FormControl, FormBuilder
+  - Binding desde el template
+
+-->
+
+<!--
+
+## Día 6 (M-16). Servicios HTTP
+
+- Formularios reactivos (review). Mensajes de validación
+
+  - Validaciones síncronas y asíncronas.
+  - Testing de formularios reactivos.
+
+- Introducción a los servicios HTTP en Angular.
+- Servicio fake basado en JSONServer.
+  - Prueba con Postman
+- Servicio HttpClientModule. Observables (RxJs).
+  - Creación de un ApiRepositoryService.
+  - Configuración del servicio HTTP: provider
+  - Uso desde la feature Tasks.
+
+- [Descanso]
+
+- Servicio HttpClientModule. Observables (RxJs).
+  - Tests de servicios HTTP con HttpTestingController
+  - Test de componentes con servicios HTTP (mocks y spies).
+
+- Servicios stateful: patrón Flux
+  - Estado con RxJS: Subjects
+  - Clonado de ToDo como ToDo-Flux
+  - Uso del estado desde los componentes ToDo...
+  - Uso desde cualquier parte de la aplicación.
+
+-->
