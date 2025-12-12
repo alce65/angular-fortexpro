@@ -15,8 +15,9 @@ describe('Header', () => {
 
     fixture = TestBed.createComponent(Header);
     component = fixture.componentInstance;
-    await fixture.whenStable();
+    fixture.componentRef.setInput('appTitle', 'Angular')
     fixture.detectChanges();
+    await fixture.whenStable();
     debugElement = fixture.debugElement;
   });
 
@@ -24,7 +25,7 @@ describe('Header', () => {
   // test de implementacion (caja blanca)
   it('should create', () => {
     expect(component).toBeTruthy();
-    expect( component['title']() ).toContain('Angular');
+    expect( component['appTitle']() ).toContain('Angular');
     expect( component['subtitle']() ).toMatch(/demo/i);
   });
 

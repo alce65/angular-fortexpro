@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, input, signal } from '@angular/core';
 
 @Component({
   selector: 'fox-header',
@@ -8,7 +8,7 @@ import { Component, signal } from '@angular/core';
       <ng-content></ng-content>
       <div class="main-header">
         <div>
-          <h1>{{ title() }}</h1>
+          <h1>{{ appTitle() }}</h1>
           <p>{{ subtitle() }}</p>
         </div>
         <div>
@@ -51,6 +51,7 @@ import { Component, signal } from '@angular/core';
   `,
 })
 export class Header {
-  protected readonly title = signal('Angular 21 Demo 1');
+  readonly appTitle = input.required<string>()
+  // signal('Angular 21 Demo 1');
   protected readonly subtitle = signal('Demo 1 - Signals');
 }

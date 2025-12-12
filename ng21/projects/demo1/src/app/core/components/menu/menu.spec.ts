@@ -1,8 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { Menu } from './menu';
 import { menuOption } from '../../types/menu-option';
-import { InputSignal, signal } from '@angular/core';
 import { provideRouter } from '@angular/router';
 
 const mockRoutes: menuOption[] = [{ path: 'test', label: 'Test' }];
@@ -19,8 +17,10 @@ describe('Menu', () => {
 
     fixture = TestBed.createComponent(Menu);
     component = fixture.componentInstance;
-    component.options = signal(mockRoutes) as unknown as InputSignal<menuOption[]>;
+    // component.options = signal(mockRoutes) as unknown as InputSignal<menuOption[]>;
+    fixture.componentRef.setInput('options', mockRoutes)
     await fixture.whenStable();
+    fixture.detectChanges()
   });
 
   it('should create', () => {

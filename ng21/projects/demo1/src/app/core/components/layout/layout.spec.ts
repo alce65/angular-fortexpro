@@ -10,7 +10,7 @@ const TEXT = 'Hello World';
 
 @Component({
   imports: [Layout, Menu],
-  template: `<fox-layout>
+  template: `<fox-layout [appTitle]="'App title'">
     <fox-menu [options]="[]"></fox-menu>
     {{ text }}
   </fox-layout>`,
