@@ -16,6 +16,7 @@ describe('Counter', () => {
 
     fixture = TestBed.createComponent(Counter);
     component = fixture.componentInstance;
+    fixture.componentRef.setInput('id', {id: 1, value: 0})
     await fixture.whenStable();
     debugElement = fixture.debugElement;
   });
