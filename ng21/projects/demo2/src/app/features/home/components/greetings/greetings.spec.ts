@@ -31,7 +31,7 @@ describe('Greetings', () => {
     inputElement.dispatchEvent(new Event('input'));
     fixture.detectChanges();
 
-    const pElement: HTMLParagraphElement = debugElement.queryAll(By.css('p'))[1].nativeElement;
+    const pElement: HTMLParagraphElement = debugElement.queryAll(By.css('p'))[2].nativeElement;
     expect(pElement.textContent).toContain(TEXT);
 
     const buttonDebugElement = debugElement.query(By.css('button'));

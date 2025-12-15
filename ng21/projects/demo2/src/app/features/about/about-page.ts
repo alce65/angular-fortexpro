@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { Time } from '../../core/services/time';
 
 @Component({
   selector: 'fox-about-page',
@@ -6,6 +7,7 @@ import { Component } from '@angular/core';
   template: `
     <section>
       <h2>About Page</h2>
+      <p>{{ this.time.getTimestamp() }}</p>
     </section>
   `,
   styles: `
@@ -15,4 +17,6 @@ import { Component } from '@angular/core';
     }
   `,
 })
-export default class AboutPage {}
+export default class AboutPage {
+  protected readonly time = inject(Time);
+}
