@@ -1,4 +1,5 @@
-import { Component, input, signal } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
+import { TITLE } from '../../../app';
 
 @Component({
   selector: 'fox-header',
@@ -51,7 +52,7 @@ import { Component, input, signal } from '@angular/core';
   `,
 })
 export class Header {
-  readonly appTitle = input.required<string>()
+  readonly appTitle = inject(TITLE)
   // signal('Angular 21 Demo 1');
   protected readonly subtitle = signal('Demo 1 - Signals');
 }
