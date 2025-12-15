@@ -1,6 +1,10 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { TaskItem } from './task-item';
+import { Task } from '../../types/task';
+
+const mockTask: Task = {
+
+} as Task
 
 describe('TaskItem', () => {
   let component: TaskItem;
@@ -14,6 +18,8 @@ describe('TaskItem', () => {
 
     fixture = TestBed.createComponent(TaskItem);
     component = fixture.componentInstance;
+    fixture.componentRef.setInput('task', mockTask)
+    
     await fixture.whenStable();
   });
 
