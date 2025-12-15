@@ -1,5 +1,8 @@
 import { Routes } from '@angular/router';
 import { menuOption } from './core/types/menu-option';
+import { Time } from './core/services/time';
+import { Task } from './features/todo/types/task';
+import { AppStorage } from './core/services/storage';
 
 export const routes: Routes = [
   {
@@ -22,6 +25,12 @@ export const routes: Routes = [
     data: {
       label: 'Tareas',
     },
+    providers: [
+      {
+        provide: Storage,
+        useFactory: () => new AppStorage<Task[]>('todo'),
+      },
+    ],
   },
 
   {
@@ -31,6 +40,7 @@ export const routes: Routes = [
     data: {
       label: 'Nosotros',
     },
+    providers: [Time],
   },
   {
     path: '**',
