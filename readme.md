@@ -211,9 +211,9 @@ Componentes (continuación). Comunicación entre componentes
 
 - [Descanso] 11:30 - 12:00
 
-
 - Directivas (final)
-- Componentes dinámicos
+  - Directivas propias estructurales
+  - Componentes dinámicos
 
 - Arquitectura de componentes
   - Componentes de contenedores vs de presentación.
@@ -221,8 +221,8 @@ Componentes (continuación). Comunicación entre componentes
 - Ejemplo: Notes List (desde un proyecto previo)
   - Entidad Notes. Modelo y mock de datos asíncrono.
   - Componente Notes-List. Lógica del estado
-  - Componente Notes-Item. Input y Output (Eventos)
-  - Componente Notes-Create. Output (Eventos)
+  - Componente Notes-Item. input() y output() (Eventos)
+  - Componente Notes-Create. output (Eventos)
     - Forms Template Driven (TD)
     - NgForm implícito, NgModel. Referencias locales
     - viewChild(NgForm) y form.reset()
@@ -232,7 +232,7 @@ Componentes (continuación). Comunicación entre componentes
 
 ## Día 5 (L-15). Servicios. Providers e injectors. Formularios DD
 
-- Tests de Forms TD
+- Defer
 - Introducción a los servicios en Angular.
 - Servicios y Providers. DI (Dependency Injection)
 
