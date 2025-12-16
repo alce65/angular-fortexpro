@@ -1,7 +1,8 @@
-import { Component, output, } from '@angular/core';
+import { Component, inject, output } from '@angular/core';
 import { Card } from '../../../../core/components/card/card';
 import { FormsModule, NgForm } from '@angular/forms';
 import { TaskDTO } from '../../types/task';
+import { TasksStore } from '../../store/tasks-store';
 
 @Component({
   selector: 'fox-task-form',
@@ -47,7 +48,8 @@ import { TaskDTO } from '../../types/task';
 export class TaskForm {
   // form = viewChild<ElementRef>('form');
   // ngForm = viewChild<NgForm>('ngForm');
-  protected readonly createEvent = output<TaskDTO>();
+  protected readonly createEvent = output();
+  private store = inject(TasksStore);
 
   // ngOnInit(): void {
   //   console.log(this.form());
@@ -56,7 +58,8 @@ export class TaskForm {
 
   protected handleSubmit(ngForm: NgForm) {
     const data: TaskDTO = ngForm.value;
-    this.createEvent.emit(data);
+    this.store.add(data);
+    this.createEvent.emit();
     ngForm.resetForm();
   }
 }

@@ -1,18 +1,24 @@
 {
-    "tasks": [
-        {
-            "id": "1dc8",
-            "title": "Crear el proyecto",
-            "owner": "Ana Belén",
-            "isCompleted": false
-        }
-    ],
-    "notes": [
-        {
-            "id": "1dc8",
-            "title": "Nota: Crear el proyecto",
-            "owner": "Ana",
-            "isCompleted": false
-        }
-    ]
+  "tasks": [
+    {
+      "id": "1dc8",
+      "title": "Crear el proyecto",
+      "owner": "Ana Belén",
+      "isCompleted": false
+    },
+    {
+      "id": "b91a",
+      "title": "Otra tarea",
+      "owner": "Pepe",
+      "isCompleted": true
+    }
+  ],
+  "notes": [
+    {
+      "id": "1dc8",
+      "title": "Nota: Crear el proyecto",
+      "owner": "Ana",
+      "isCompleted": false
+    }
+  ]
 }
