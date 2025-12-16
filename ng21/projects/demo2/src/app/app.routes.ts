@@ -1,8 +1,6 @@
 import { Routes } from '@angular/router';
 import { menuOption } from './core/types/menu-option';
 import { Time } from './core/services/time';
-import { Task } from './features/todo/types/task';
-import { AppStorage } from './core/services/storage';
 
 export const routes: Routes = [
   {
@@ -20,17 +18,12 @@ export const routes: Routes = [
   },
   {
     path: 'todo',
+
     loadComponent: () => import('./features/todo/todo-page'),
     title: 'Tareas | Demo2',
     data: {
       label: 'Tareas',
     },
-    providers: [
-      {
-        provide: Storage,
-        useFactory: () => new AppStorage<Task[]>('todo'),
-      },
-    ],
   },
 
   {

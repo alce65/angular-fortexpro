@@ -14,6 +14,7 @@ export const appConfig: ApplicationConfig = {
       provide: LOCALE_ID,
       useValue: 'es',
     },
+    { provide: 'storeName', useValue: 'tasks' },
     // {
     //   provide: Time,
     //   useFactory: () => new Time(),
