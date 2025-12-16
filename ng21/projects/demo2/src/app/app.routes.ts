@@ -25,6 +25,15 @@ export const routes: Routes = [
       label: 'Tareas',
     },
   },
+  {
+    path: 'notes',
+
+    loadComponent: () => import('./features/notes/notes-page'),
+    title: 'Notas | Demo2',
+    data: {
+      label: 'Notas',
+    },
+  },
 
   {
     path: 'about',
