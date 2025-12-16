@@ -1,13 +1,14 @@
-import { Component, ElementRef, OnInit, signal, viewChild } from '@angular/core';
+import { Component, ElementRef, inject, OnInit, signal, viewChild } from '@angular/core';
 import { TaskForm } from '../task-form/task-form';
 import { TaskItem } from '../task-item/task-item';
 import { Task, TaskDTO } from '../../types/task';
 import { JsonPipe } from '@angular/common';
-import { getTasks } from '../../services/tasks';
+import { TasksLocalRepo } from '../../services/tasks-local-repo';
 
 @Component({
   selector: 'fox-tasks-list',
   imports: [TaskForm, TaskItem, JsonPipe],
+
   template: `
     <details #details>
       <summary>Añadir tarea</summary>
@@ -42,6 +43,7 @@ import { getTasks } from '../../services/tasks';
   `,
 })
 export class TasksList implements OnInit {
+  private repo = inject(TasksLocalRepo);
   protected readonly tasks = signal<Task[]>([]);
   protected readonly details = viewChild<ElementRef<HTMLDetailsElement>>('details');
 
@@ -50,36 +52,66 @@ export class TasksList implements OnInit {
   }
 
   protected load() {
-    getTasks().then((tasksData) => this.tasks.set(tasksData));
+    const sub = this.repo.getAll().subscribe((tasksData) => {
+      console.log('GET ALL Subscribe');
+      this.tasks.set(tasksData);
+    });
+    sub.unsubscribe();
   }
 
   protected delete(task: Task) {
-    const data = this.tasks().filter((t) => t.id !== task.id);
-    this.tasks.set(data);
+    // Estrategia optimista
+    // Syncrono -> estado this.tasks
+    // Asyncrono / repo
 
-    // this.tasks.update(
-    //   (tasks) => tasks.filter((t) => t.id !== task.id
-    // ));
+    // Estrategia no optimista
+    // Asyncrono / repo
+    // Syncrono -> estado this.tasks
+
+    const sub = this.repo.delete(task.id).subscribe({
+      next: () => {
+        console.log('Delete subscribe');
+        const data = this.tasks().filter((t) => t.id !== task.id);
+        this.tasks.set(data);
+      },
+      error: (error: Error) => {
+        console.log(error.message);
+      },
+    });
+    sub.unsubscribe();
   }
 
   protected update(updatedTask: Task) {
-    const data = this.tasks().map((t) => (t.id === updatedTask.id ? updatedTask : t));
-    this.tasks.set(data);
+    const { id, ...data } = updatedTask;
+    const sub = this.repo.update(id, data).subscribe({
+      next: (updateTask) => {
+        const data = this.tasks().map((t) => (t.id === updateTask.id ? updateTask : t));
+        this.tasks.set(data);
+      },
+      error: (error: Error) => {
+        console.log(error.message);
+      },
+    });
+    sub.unsubscribe();
   }
 
   protected add(data: TaskDTO) {
-    const newTask: Task = {
-      id: Math.max(0, ...this.tasks().map((t) => t.id)) + 1,
-      title: data.title,
-      owner: data.owner,
+    const newTaskDTO: TaskDTO = {
+      ...data,
       isCompleted: false,
     };
-    // const newTasks = [...this.tasks(), newTask];
-    // this.tasks.set(newTasks);
-    this.tasks.update((tasks) => [...tasks, newTask]);
 
+    const sub = this.repo.add(newTaskDTO).subscribe({
+      next: (newTask) => {
+        console.log('NEW', newTask);
+        this.tasks.update((tasks) => [...tasks, newTask]);
+      },
+      error: (error: Error) => {
+        console.log(error.message);
+      },
+    });
+    sub.unsubscribe();
     // cerrar el details
-
     if (this.details()?.nativeElement.open) {
       this.details()?.nativeElement.removeAttribute('open');
     }
