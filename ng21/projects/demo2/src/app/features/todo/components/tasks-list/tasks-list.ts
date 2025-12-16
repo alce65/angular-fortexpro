@@ -1,36 +1,41 @@
-import { Component, ElementRef, inject, OnInit, signal, viewChild } from '@angular/core';
+import { Component, ElementRef, inject, OnDestroy, OnInit, signal, viewChild } from '@angular/core';
 import { TaskForm } from '../task-form/task-form';
 import { TaskItem } from '../task-item/task-item';
 import { Task, TaskDTO } from '../../types/task';
 import { JsonPipe } from '@angular/common';
-import { TasksLocalRepo } from '../../services/tasks-local-repo';
+import { TasksApiRepo } from '../../services/tasks-api-repo';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'fox-tasks-list',
   imports: [TaskForm, TaskItem, JsonPipe],
 
   template: `
-    <details #details>
-      <summary>Añadir tarea</summary>
-      <fox-task-form (createEvent)="add($event)" />
-    </details>
+    @if (error()) {
+      <p>{{ error() }}</p>
+    } @else {
+      <details #details>
+        <summary>Añadir tarea</summary>
+        <fox-task-form (createEvent)="add($event)" />
+      </details>
 
-    <ul>
-      @for (task of tasks(); track task.id) {
-        <li>
-          <fox-task-item
-            [task]="task"
-            (deleteEvent)="delete($event)"
-            (updateEvent)="update($event)"
-          />
-        </li>
-      }
-    </ul>
+      <ul>
+        @for (task of tasks(); track task.id) {
+          <li>
+            <fox-task-item
+              [task]="task"
+              (deleteEvent)="delete($event)"
+              (updateEvent)="update($event)"
+            />
+          </li>
+        }
+      </ul>
 
-    <pre>
+      <pre>
     {{ tasks() | json }}
     </pre
-    >
+      >
+    }
   `,
   styles: `
     details {
@@ -42,21 +47,33 @@ import { TasksLocalRepo } from '../../services/tasks-local-repo';
     }
   `,
 })
-export class TasksList implements OnInit {
-  private repo = inject(TasksLocalRepo);
+export class TasksList implements OnInit, OnDestroy {
+  private repo = inject(TasksApiRepo);
   protected readonly tasks = signal<Task[]>([]);
+  protected readonly error = signal<string | null>(null);
   protected readonly details = viewChild<ElementRef<HTMLDetailsElement>>('details');
+  private subs: Subscription[] = [];
 
   ngOnInit(): void {
     this.load();
   }
+  ngOnDestroy(): void {
+    this.subs.forEach((sub) => sub.unsubscribe());
+  }
 
   protected load() {
-    const sub = this.repo.getAll().subscribe((tasksData) => {
-      console.log('GET ALL Subscribe');
-      this.tasks.set(tasksData);
+    const sub = this.repo.getAll().subscribe({
+      next: (tasksData) => {
+        console.log('GET ALL Subscribe');
+        this.tasks.set(tasksData);
+        this.error.set(null);
+      },
+      error: (error: Error) => {
+        console.log('List error', error.message);
+        this.error.set(error.message);
+      },
     });
-    sub.unsubscribe();
+    this.subs.push(sub);
   }
 
   protected delete(task: Task) {
@@ -75,10 +92,10 @@ export class TasksList implements OnInit {
         this.tasks.set(data);
       },
       error: (error: Error) => {
-        console.log(error.message);
+        console.log('List error', error.message);
       },
     });
-    sub.unsubscribe();
+    this.subs.push(sub);
   }
 
   protected update(updatedTask: Task) {
@@ -89,10 +106,10 @@ export class TasksList implements OnInit {
         this.tasks.set(data);
       },
       error: (error: Error) => {
-        console.log(error.message);
+        console.log('List error', error.message);
       },
     });
-    sub.unsubscribe();
+    this.subs.push(sub);
   }
 
   protected add(data: TaskDTO) {
@@ -107,10 +124,10 @@ export class TasksList implements OnInit {
         this.tasks.update((tasks) => [...tasks, newTask]);
       },
       error: (error: Error) => {
-        console.log(error.message);
+        console.log('List error', error.message);
       },
     });
-    sub.unsubscribe();
+    this.subs.push(sub);
     // cerrar el details
     if (this.details()?.nativeElement.open) {
       this.details()?.nativeElement.removeAttribute('open');
