@@ -212,6 +212,7 @@ Componentes (continuación). Comunicación entre componentes
 - [Descanso] 11:30 - 12:00
 
 - Directivas (final)
+
   - Directivas propias estructurales
   - Componentes dinámicos
 
@@ -228,8 +229,6 @@ Componentes (continuación). Comunicación entre componentes
     - viewChild(NgForm) y form.reset()
     - viewChild(Form), ElementRef.nativeElement y acceso al DOM
 
-<!--
-
 ## Día 5 (L-15). Servicios. Providers e injectors. Formularios DD
 
 - Defer
@@ -237,62 +236,70 @@ Componentes (continuación). Comunicación entre componentes
 - Servicios y Providers. DI (Dependency Injection)
 
   - Provider root v. provider en un componente / ruta
-  - Ejemplo con un servicio simple: DateService
+  - Ejemplo con un servicio simple: **Time**
   - Injector jerárquico. Servicios singleton y no singleton.
 
+- Tipos de proveedores
+
+  - useValue: tokens y constantes
+  - useFactory
+  - useClass
+  - useExisting
+
+- Servicios con parámetros: AppStore
+
+  - Definición del servicio
+  - Definición del provider: useFactory
+  - Test del servicio
+
+- [Descanso] 11:45 - 12:15
+
 - Servicios y patrón Repository
-
+  - Interface para los repositorios
+    - Uso de observables
   - Servicio InMemoryTaskRepository. Mock de datos.
-  - Uso en los componentes. Inyección de dependencias.
-  - Métodos CRUD. getAll() y getById()
-
-- [Descanso]
-
-- Servicios y patrón Repository (continuación)
-
-  - Métodos CRUD. add(), update(), delete()
-  - Uso de promesas
+    - Uso en los componentes. Inyección de dependencias.
+    - Métodos CRUD. getAll() y getById()
+    - Métodos CRUD. add(), update(), delete()
   - Repositorio y lógica de negocio (estado). Estrategias
   - Repositorio y persistencia local (localStorage).
-  - Testing de servicios.
-    - Tests del servicio
-      - Test de métodos CRUD.
-      - Test de promesas (async, whenStable, expectAsync).
-    - Testing de componentes con servicios (mocks y spies).
+    - Usamos el servicio Storage
 
+<!--
 - Formularios reactivos (DD)
   - FormGroup, FormControl, FormBuilder
   - Binding desde el template
-
+  - Validaciones síncronas y asíncronas.
+  - Testing de formularios reactivos.
+- Formularios reactivos (review). Mensajes de validación
 -->
-
-<!--
 
 ## Día 6 (M-16). Servicios HTTP
 
-- Formularios reactivos (review). Mensajes de validación
+- Testing de servicios (repaso, sin hacerlos).
 
-  - Validaciones síncronas y asíncronas.
-  - Testing de formularios reactivos.
+  - Tests del servicio
+    - Test de métodos CRUD.
+    - Test de promesas (async, whenStable, expectAsync).
+  - Testing de componentes con servicios (mocks y spies).
 
 - Introducción a los servicios HTTP en Angular.
 - Servicio fake basado en JSONServer.
   - Prueba con Postman
 - Servicio HttpClientModule. Observables (RxJs).
+
   - Creación de un ApiRepositoryService.
   - Configuración del servicio HTTP: provider
   - Uso desde la feature Tasks.
 
-- [Descanso]
+- [Descanso] 11:20 - 11:50
 
 - Servicio HttpClientModule. Observables (RxJs).
   - Tests de servicios HTTP con HttpTestingController
-  - Test de componentes con servicios HTTP (mocks y spies).
+  - Comentado: test de componentes con servicios HTTP (mocks y spies).
 
 - Servicios stateful: patrón Flux
   - Estado con RxJS: Subjects
   - Clonado de ToDo como ToDo-Flux
   - Uso del estado desde los componentes ToDo...
   - Uso desde cualquier parte de la aplicación.
-
--->
